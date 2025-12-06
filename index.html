@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Niapept™ – Crema cosmetica antietà per viso e collo</title>
+
+  <style>
+    :root {
+      --bg: #020617;
+      --card-bg: #ffffff;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --border-soft: #e5e7eb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #60a5fa 0, #020617 48%, #020617 100%);
+      color: var(--text-main);
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .page {
+      max-width: 900px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 24px;
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 20px 45px rgba(15,23,42,0.55);
+      backdrop-filter: blur(10px);
+    }
+
+    @media (max-width: 780px) {
+      .page {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 22px 22px 18px;
+    }
+
+    .badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+      color: #1d4ed8;
+      background: #e0f2fe;
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin-bottom: 10px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #3b82f6;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    ul.benefits {
+      list-style: none;
+      margin-bottom: 16px;
+    }
+
+    ul.benefits li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    ul.benefits li::before {
+      content: "✔";
+      color: var(--accent);
+      font-weight: bold;
+      margin-top: 1px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      margin: 14px 0 6px;
+    }
+
+    .disclaimer {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    .cta-area {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: none;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 12px 25px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .btn-secondary:hover {
+      background: #d1d5db;
+      transform: translateY(-1px);
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .trust-tag {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      color: #4b5563;
+    }
+
+    /* Right column */
+    .right {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prod-img {
+      max-width: 260px;
+      width: 100%;
+      display: block;
+    }
+
+    .badges-img {
+      max-width: 100%;
+      width: 100%;
+      object-fit: contain;
+      opacity: 0.96;
+    }
+
+    /* Cookie banner */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #f9fafb;
+      border-top: 1px solid var(--border-soft);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+      z-index: 9999;
+    }
+
+    .cookie-banner p {
+      margin: 0;
+      color: #4b5563;
+    }
+
+    .cookie-banner a {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+
+    .cookie-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .cookie-btn {
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: none;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .cookie-settings {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .cookie-accept {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    @media (max-width: 640px) {
+      .cookie-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* Rodapé de política AdCombo */
+    .policy-footer {
+      margin-top: 14px;
+      font-size: 10px;
+      color: #6b7280;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="page">
+    <section class="card">
+      <div class="badge-top">
+        <span class="badge-dot"></span>
+        Pagina informativa ufficiale Niapept™
+      </div>
+
+      <h1>Niapept™: crema cosmetica antietà per una pelle dall’aspetto più giovane</h1>
+      <p class="subtitle">
+        Niapept™ è una crema cosmetica pensata per la zona viso e collo. La sua
+        formula è studiata per idratare la pelle, migliorare l’aspetto delle rughe
+        di espressione e sostenere un incarnato più liscio e uniforme nell’ambito
+        di una routine quotidiana di skincare.
+      </p>
+
+      <h2 class="section-title">Perché molte persone scelgono creme antietà?</h2>
+      <p class="subtitle">
+        Con il passare del tempo la pelle può apparire meno elastica, più secca e
+        con linee di espressione più evidenti. Uno stile di vita intenso, lo stress
+        e l’esposizione al sole possono accentuare questi segni. Per questo tante
+        persone, soprattutto dopo i 35 anni, decidono di prendersi più cura del
+        viso con prodotti specifici.
+      </p>
+
+      <ul class="benefits">
+        <li>Contribuisce a mantenere la pelle idratata e morbida.</li>
+        <li>Crema pensata per viso e collo, uso quotidiano.</li>
+        <li>Texture piacevole, facile da applicare.</li>
+        <li>Formula cosmetica con ingredienti selezionati.</li>
+      </ul>
+
+      <h2 class="section-title">Come si inserisce Niapept™ nella routine?</h2>
+      <p class="subtitle">
+        Secondo le informazioni del produttore, Niapept™ può essere applicata sulla
+        pelle detersa, mattina e/o sera, seguendo le indicazioni riportate sulla
+        confezione. Può essere abbinata a detergente delicato, tonico e protezione
+        solare per una cura quotidiana più completa.
+      </p>
+
+      <p class="disclaimer">
+        Niapept™ è un prodotto cosmetico. Non è un medicinale e non è destinato a
+        prevenire, trattare o curare malattie. I risultati possono variare da
+        persona a persona. In caso di pelle sensibile, gravidanza, allattamento
+        o patologie dermatologiche, è consigliabile chiedere il parere del proprio
+        medico o dermatologo prima dell’uso.
+      </p>
+
+      <div class="cta-area">
+        <button class="btn btn-primary"
+          onclick="window.location.href='https://5adb6f.asdnecfoqwq.cc/?target=-7EBNQCgQAAAfApAQDSJsABQEBEREKEQkKEQ1CEQ0SAAF_YWRjb21ibwEx&al=103597&ap=-1'">
+          Vai all’offerta ufficiale Niapept™
+        </button>
+
+        <button class="btn btn-secondary"
+          onclick="window.location.href='https://5adb6f.asdnecfoqwq.cc/?target=-7EBNQCgQAAAfApAQDSJsABQEBEREKEQkKEQ1CEQ0SAAF_YWRjb21ibwEx&al=103597&ap=-1'">
+          Apri la pagina di ordine sicura
+        </button>
+
+        <div class="trust-row">
+          <span class="trust-tag">Checkout sicuro</span>
+          <span class="trust-tag">Crema antietà cosmetica</span>
+          <span class="trust-tag">Per viso e collo</span>
+        </div>
+      </div>
+
+      <div class="policy-footer">
+        <strong>Note legali importanti:</strong><br />
+        Questo materiale ha solo scopo informativo e commerciale e non sostituisce
+        il parere di un professionista della salute. Le condizioni complete
+        (prezzo, consegna, promozioni) sono disponibili esclusivamente sulla
+        pagina ufficiale del partner.<br /><br />
+
+        <!-- Notas exigidas pela política da rede (mantidas em PT) -->
+        *Este publieditorial é baseado em ficção e qualquer semelhança com pessoas,
+        lugares ou eventos reais é mera coincidência.<br />
+        *O produto anunciado é um suplemento alimentar. Suplementos alimentares
+        são produtos destinados a complementar a dieta. Não são medicamentos e não
+        se destinam a tratar, diagnosticar, mitigar, prevenir ou curar doenças.<br />
+        É proibido mencionar profissionais de saúde, instalações médicas, pacientes
+        e seus comentários, bem como atribuir propriedades de prevenção ou cura de
+        doenças ao produto.
+      </div>
+    </section>
+
+    <aside class="right">
+      <!-- Troque estas imagens pelos arquivos do Niapept hospedados no seu projeto -->
+      <img src="/niapept_eng.png" class="prod-img" alt="Niapept™ crema" />
+    </aside>
+  </main>
+
+  <!-- Banner de cookies com redirecionamento para o link de afiliado -->
+  <div id="cookie-banner" class="cookie-banner">
+    <p>
+      Usiamo i cookie per migliorare la tua esperienza di navigazione.
+      Continuando, accetti la nostra informativa sui cookie.
+    </p>
+
+    <div class="cookie-actions">
+      <button class="cookie-btn cookie-settings"
+        onclick="window.location.href='https://5adb6f.asdnecfoqwq.cc/?target=-7EBNQCgQAAAfApAQDSJsABQEBEREKEQkKEQ1CEQ0SAAF_YWRjb21ibwEx&al=103597&ap=-1'">
+        Gestisci preferenze
+      </button>
+
+      <button class="cookie-btn cookie-accept"
+        onclick="window.location.href='https://5adb6f.asdnecfoqwq.cc/?target=-7EBNQCgQAAAfApAQDSJsABQEBEREKEQkKEQ1CEQ0SAAF_YWRjb21ibwEx&al=103597&ap=-1'">
+        Accetta tutti i cookie
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>
